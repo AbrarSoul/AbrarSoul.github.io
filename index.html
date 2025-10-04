@@ -59,6 +59,7 @@
     
     .container{max-width:1200px;margin:auto;padding:24px}
     header{position:fixed;top:0;left:0;right:0;background:rgba(10,10,15,0.9);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);z-index:100;transition:all 0.3s ease;width:100%;box-shadow:0 2px 20px rgba(0,0,0,0.1)}
+    :root.light header{background:rgba(250,251,252,0.9);box-shadow:0 2px 20px rgba(0,0,0,0.05)}
     header .container{display:flex;gap:16px;align-items:center;justify-content:space-between}
     .brand{display:flex;gap:12px;align-items:center}
     .avatar{width:50px;height:50px;border-radius:50%;background:var(--gradient-1);display:grid;place-items:center;font-weight:800;color:#fff;box-shadow:var(--shadow);transition:transform 0.3s ease}
@@ -88,7 +89,7 @@
     .hero-animated{text-align:center;margin-bottom:40px;padding:0 40px}
     .welcome-title{font-size:clamp(28px,5vw,42px);line-height:1.2;margin:0 0 12px;font-weight:800;background:var(--gradient-1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
     .welcome-subtitle{font-size:clamp(18px,3vw,24px);line-height:1.3;margin:0 0 16px;font-weight:600;color:var(--accent-2)}
-    .combined-text{font-size:clamp(18px,3vw,24px);line-height:1.3;margin:0;color:var(--accent-2);font-weight:700;text-align:center}
+    .combined-text{font-size:clamp(20px,3.5vw,28px);line-height:1.3;margin:0;color:var(--accent-2);font-weight:900;text-align:center;letter-spacing:0.5px;text-shadow:0 2px 4px rgba(0,0,0,0.3)}
     .typing-text{color:var(--accent-2);font-weight:700;text-shadow:0 0 10px rgba(6,182,212,0.5),0 0 20px rgba(6,182,212,0.3),0 0 30px rgba(6,182,212,0.2);animation:glow-cyan 2s ease-in-out infinite alternate;overflow:hidden;border-right:2px solid var(--accent-2);white-space:nowrap}
     @keyframes glow-cyan{from{text-shadow:0 0 10px rgba(6,182,212,0.5),0 0 20px rgba(6,182,212,0.3),0 0 30px rgba(6,182,212,0.2)}to{text-shadow:0 0 15px rgba(6,182,212,0.8),0 0 25px rgba(6,182,212,0.5),0 0 35px rgba(6,182,212,0.3)}}
     @keyframes typing{from{width:0}to{width:100%}}
@@ -179,7 +180,7 @@
     
     /* Research highlights */
     .research-highlight{background:linear-gradient(135deg, rgba(6,182,212,0.1) 0%, rgba(99,102,241,0.1) 100%);border-left:4px solid var(--accent-2);padding:20px;border-radius:12px;margin:16px 0}
-    .research-highlight h4{color:var(--accent-2);margin:0 0 8px}
+    .research-highlight h4{color:var(--accent-2);margin:0 0 8px;font-size:20px;font-weight:700}
     
     /* Skill bars */
     .skill-bar{background:var(--chip);height:8px;border-radius:4px;overflow:hidden;margin:8px 0}
@@ -188,6 +189,27 @@
     /* Scroll animations */
     .fade-in{opacity:0;transform:translateY(30px);transition:all 0.6s ease}
     .fade-in.visible{opacity:1;transform:translateY(0)}
+    
+    /* Manual toggle abstracts */
+    .abstract-toggle{cursor:pointer;display:inline-flex;align-items:center;gap:8px;color:var(--accent-2);font-weight:600;margin:12px 0;transition:all 0.3s ease;padding:8px 12px;border-radius:8px;border:1px solid transparent}
+    .abstract-toggle:hover{background:rgba(6,182,212,0.1);border-color:var(--accent-2);transform:translateY(-1px)}
+    .abstract-toggle i{transition:transform 0.3s ease}
+    .abstract-toggle.expanded i{transform:rotate(180deg)}
+    .abstract-content{max-height:0;overflow:hidden;transition:max-height 0.6s ease-out;margin-top:12px;padding:0 16px;border-left:3px solid var(--accent-2);background:rgba(6,182,212,0.05);border-radius:0 8px 8px 0}
+    .abstract-content.expanded{padding:16px;overflow-y:visible}
+    .abstract-text{color:var(--muted);line-height:1.6;font-size:14px;white-space:normal;word-wrap:break-word}
+    
+    /* Proposal point toggles */
+    .proposal-points{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin-top:20px}
+    .proposal-point{cursor:pointer;display:flex;align-items:center;gap:12px;padding:12px 16px;background:rgba(6,182,212,0.05);border:1px solid rgba(6,182,212,0.2);border-radius:8px;transition:all 0.3s ease;position:relative}
+    .proposal-point:hover{background:rgba(6,182,212,0.1);border-color:var(--accent-2);transform:translateY(-2px);box-shadow:0 4px 12px rgba(6,182,212,0.15)}
+    .proposal-point-number{display:flex;align-items:center;justify-content:center;width:32px;height:32px;background:var(--accent-2);color:#fff;border-radius:50%;font-weight:700;font-size:14px;flex-shrink:0}
+    .proposal-point-title{font-weight:600;color:var(--fg);flex:1}
+    .proposal-point-icon{color:var(--accent-2);transition:transform 0.3s ease}
+    .proposal-point.expanded .proposal-point-icon{transform:rotate(180deg)}
+    .proposal-point-content{max-height:0;overflow:hidden;transition:max-height 0.6s ease-out;margin-top:12px;padding:0 16px;border-left:3px solid var(--accent-2);background:rgba(6,182,212,0.03);border-radius:0 8px 8px 0}
+    .proposal-point-content.expanded{padding:16px;overflow-y:visible}
+    .proposal-point-text{color:var(--muted);line-height:1.6;font-size:14px;white-space:normal;word-wrap:break-word}
     
     /* Particle effect */
     .particles{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:-1;will-change:transform}
@@ -254,7 +276,7 @@
           
           <div class="research-highlight" style="text-align:center">
             <h4><i class="fas fa-flask"></i> Current Research Focus</h4>
-            <p>Developing novel approaches to AI-powered sentiment analysis, biological aging prediction, and contract analysis using advanced NLP techniques and machine learning algorithms.</p>
+            <p>Focusing on agentic frameworks in software engineering, including systematic literature review, newsletter marketing agent development, and Agentic Code Security Auto-Fixer project. Exploring how autonomous AI agents can enhance software development processes and security practices.</p>
           </div>
           
           <div class="chips" aria-label="skills" style="margin-top:24px">
@@ -278,7 +300,7 @@
               <i class="fas fa-envelope"></i>
               Contact Me
             </a>
-            <a class="btn" href="./cv.pdf" title="Download my CV">
+            <a class="btn" href="./CV.pdf" title="Download my CV">
               <i class="fas fa-download"></i>
               Download CV
             </a>
@@ -340,11 +362,438 @@
           </div>
         </div>
       </div>
+      
+      <!-- PhD Research Proposals -->
+      <div class="section-title" style="margin-top: 40px;">
+        <h2><i class="fas fa-file-alt"></i> PhD Research Proposals</h2>
+      </div>
+      
+      <div class="projects">
+        <!-- Research Proposal 1 -->
+        <article class="project">
+          <h4><i class="fas fa-robot"></i> Reinforcement + Generative Optimization for Automated Software Testing with Generative AI (Optimizer Agent)</h4>
+          
+          
+          <div class="proposal-points">
+            <div class="proposal-point" onclick="toggleProposalPoint(this)">
+              <div class="proposal-point-number">1</div>
+              <div class="proposal-point-title">Objective</div>
+              <i class="fas fa-chevron-down proposal-point-icon"></i>
+            </div>
+            <div class="proposal-point-content">
+              <div class="proposal-point-text">Design an Optimizer Agent that turns LLM-generated test cases into a high-coverage, low-redundancy, cost-aware test suite by closing the loop between generation → execution → learning.</div>
+            </div>
+
+            <div class="proposal-point" onclick="toggleProposalPoint(this)">
+              <div class="proposal-point-number">2</div>
+              <div class="proposal-point-title">Research Questions</div>
+              <i class="fas fa-chevron-down proposal-point-icon"></i>
+            </div>
+            <div class="proposal-point-content">
+              <div class="proposal-point-text">
+                <strong>RQ1.</strong> How effective is an Optimizer Agent (RL/Bandit/BO) at improving structural and mutation coverage versus prompt-only LLM generation?<br><br>
+                <strong>RQ2.</strong> What reward formulation best balances coverage gain, bug discovery, redundancy reduction, and cost/time?<br><br>
+                <strong>RQ3.</strong> Which optimization strategy (policy-gradient RL, contextual bandits, Bayesian optimization, or GA) gives the best quality-per-cost trade-off across projects of different sizes?<br><br>
+                <strong>RQ4.</strong> How well do improvements generalize across repositories, languages, and test frameworks?
+              </div>
+            </div>
+
+            <div class="proposal-point" onclick="toggleProposalPoint(this)">
+              <div class="proposal-point-number">3</div>
+              <div class="proposal-point-title">System Overview</div>
+              <i class="fas fa-chevron-down proposal-point-icon"></i>
+            </div>
+            <div class="proposal-point-content">
+              <div class="proposal-point-text">
+                <strong>5-Stage Loop:</strong><br>
+                1. <strong>Generator</strong> (LLM + toolformer style context): Proposes test cases (unit/property/fuzz variants).<br>
+                2. <strong>Executor</strong> (sandbox): Runs tests, collects coverage, failures, runtime, flakiness, mutants killed.<br>
+                3. <strong>Selector/Memory</strong>: Deduplicates via similarity (AST + embeddings) and keeps a pool.<br>
+                4. <strong>Optimizer Agent</strong>: Uses the feedback to choose the next generation action (prompt template, seed test to mutate, temperature, focus file/function, hypothesis strategy, fuzz budget).<br>
+                5. <strong>Convergence</strong>: Stops when marginal gains fall below a threshold or budget exhausted.
+              </div>
+            </div>
+
+            <div class="proposal-point" onclick="toggleProposalPoint(this)">
+              <div class="proposal-point-number">4</div>
+              <div class="proposal-point-title">Reward Design</div>
+              <i class="fas fa-chevron-down proposal-point-icon"></i>
+            </div>
+            <div class="proposal-point-content">
+              <div class="proposal-point-text">
+                Let each iteration produce a batch (B) of tests. Compute per-batch signals:<br><br>
+                • <strong>Coverage gain:</strong> ΔC = C_new - C_prev (line/branch/path), normalized to [0,1]<br>
+                • <strong>Mutation gain:</strong> ΔM = (mutants killed_new - prev) / total mutants<br>
+                • <strong>Failure discovery:</strong> F = unique failing assertions / |B| (de-duped by stack/trace hash)<br>
+                • <strong>Redundancy penalty:</strong> R = mean cosine sim(emb(t_i), nearest in pool) ∈ [0,1]<br>
+                • <strong>Cost/time:</strong> K = exec time_B / budget ∈ [0,1]<br><br>
+                <strong>Multi-objective scalarized reward:</strong><br>
+                R(B) = α·ΔC + β·ΔM + γ·F - λ·R - μ·K<br>
+                with (α+β+γ=1); tune (λ,μ) by budget.
+              </div>
+            </div>
+
+            <div class="proposal-point" onclick="toggleProposalPoint(this)">
+              <div class="proposal-point-number">5</div>
+              <div class="proposal-point-title">Optimization Strategies</div>
+              <i class="fas fa-chevron-down proposal-point-icon"></i>
+            </div>
+            <div class="proposal-point-content">
+              <div class="proposal-point-text">
+                <strong>A. Contextual Bandits</strong> (fast, robust): Arm = "generation policy" (prompt + strategy), context = repo/file metrics; update via Thompson Sampling / UCB on R.<br><br>
+                <strong>B. Policy-Gradient RL</strong> (fine control): State = coverage map + deficit hotspots; Action = generation knobs; Reward = R. Use PPO with action masking (invalid knobs pruned).<br><br>
+                <strong>C. Bayesian Optimization</strong> (few but high-value steps): Black-box optimize R over continuous knobs (temperature, fuzz budget) + categorical (prompt template) via mixed-BO (SMAC/GP+TPE).<br><br>
+                <strong>D. Genetic Search</strong> (diverse test pools): Evolve test cases and prompts; crossover = splice assertions & inputs; mutation = boundary value twists, fuzz seeds.
+              </div>
+            </div>
+
+            <div class="proposal-point" onclick="toggleProposalPoint(this)">
+              <div class="proposal-point-number">6</div>
+              <div class="proposal-point-title">Dedup & Quality Gates</div>
+              <i class="fas fa-chevron-down proposal-point-icon"></i>
+            </div>
+            <div class="proposal-point-content">
+              <div class="proposal-point-text">
+                • <strong>Similarity filters:</strong> AST diff + semantic embedding (CodeBERT/UniXCoder). Drop if sim ≥ τ.<br>
+                • <strong>Flakiness control:</strong> re-run failing tests (k) times; label flaky if fail/pass mix occurs.<br>
+                • <strong>Invariant/Oracle quality:</strong> prefer property-based or metamorphic assertions when available; static analyzers to flag over-fitting assertions.
+              </div>
+            </div>
+
+            <div class="proposal-point" onclick="toggleProposalPoint(this)">
+              <div class="proposal-point-number">7</div>
+              <div class="proposal-point-title">Datasets & Targets</div>
+              <i class="fas fa-chevron-down proposal-point-icon"></i>
+            </div>
+            <div class="proposal-point-content">
+              <div class="proposal-point-text">
+                • <strong>Small/medium:</strong> open-source libs with mature tests (e.g., utility/date/math libs).<br>
+                • <strong>Large:</strong> 1–3 real-world repos (backend service, CLI tool).<br>
+                • <strong>Languages:</strong> start with Python (pytest + Hypothesis) and one JVM repo (JUnit + PIT).
+              </div>
+            </div>
+
+            <div class="proposal-point" onclick="toggleProposalPoint(this)">
+              <div class="proposal-point-number">8</div>
+              <div class="proposal-point-title">Baselines</div>
+              <i class="fas fa-chevron-down proposal-point-icon"></i>
+            </div>
+            <div class="proposal-point-content">
+              <div class="proposal-point-text">
+                • <strong>B0:</strong> Prompt-only LLM tests (single pass).<br>
+                • <strong>B1:</strong> Prompt + simple heuristic selection (keep unique filenames/lines touched).<br>
+                • <strong>B2:</strong> Search-based testing (e.g., EvoSuite/PBT without LLM).<br>
+                • <strong>Your methods:</strong> Bandit, RL (PPO), BO, GA.
+              </div>
+            </div>
+
+            <div class="proposal-point" onclick="toggleProposalPoint(this)">
+              <div class="proposal-point-number">9</div>
+              <div class="proposal-point-title">Metrics</div>
+              <i class="fas fa-chevron-down proposal-point-icon"></i>
+            </div>
+            <div class="proposal-point-content">
+              <div class="proposal-point-text">
+                <strong>Effectiveness:</strong><br>
+                • Line/branch/path coverage; Δ vs baseline<br>
+                • Mutation score (killed/total)<br>
+                • Bugs found (unique failing tests / confirmed issues)<br>
+                • Redundancy: avg nearest-neighbor similarity; unique lines/functions touched<br><br>
+                <strong>Efficiency:</strong><br>
+                • Quality-per-cost: (ΔC/min), (killed mutants/$)<br>
+                • Wall time & runs to reach 95% of best coverage (sample-efficiency)<br><br>
+                <strong>Stability/Generalization:</strong><br>
+                • Flake rate; transfer (train choices on Repo A, apply to Repo B)
+              </div>
+            </div>
+
+            <div class="proposal-point" onclick="toggleProposalPoint(this)">
+              <div class="proposal-point-number">10</div>
+              <div class="proposal-point-title">Experimental Design</div>
+              <i class="fas fa-chevron-down proposal-point-icon"></i>
+            </div>
+            <div class="proposal-point-content">
+              <div class="proposal-point-text">
+                • <strong>Phases:</strong> (i) Pilot on small repo to tune (α,β,γ,λ,μ). (ii) Full study across 4–6 repos × 3 budgets (time and $) × seeds (n=5).<br>
+                • <strong>Ablations:</strong> remove each reward term; freeze generator (no knob changes); swap optimizer.<br>
+                • <strong>Statistics:</strong> paired tests with Cliff's delta; bootstrap CIs; report Pareto frontiers.<br>
+                • <strong>Stopping:</strong> no improvement of R for 3 iterations OR budget hit.
+              </div>
+            </div>
+
+            <div class="proposal-point" onclick="toggleProposalPoint(this)">
+              <div class="proposal-point-number">11</div>
+              <div class="proposal-point-title">Expected Contributions</div>
+              <i class="fas fa-chevron-down proposal-point-icon"></i>
+            </div>
+            <div class="proposal-point-content">
+              <div class="proposal-point-text">
+                1. Unified reward for coverage, mutation strength, failure discovery, redundancy, and cost.<br>
+                2. Optimizer Agent design that adapts generation strategy to repo context.<br>
+                3. Budget-aware evaluation showing quality-per-cost gains over strong baselines.<br>
+                4. Reproducible toolkit (scripts + configs) to plug into CI.
+              </div>
+            </div>
+
+            <div class="proposal-point" onclick="toggleProposalPoint(this)">
+              <div class="proposal-point-number">12</div>
+              <div class="proposal-point-title">Risks & Mitigations</div>
+              <i class="fas fa-chevron-down proposal-point-icon"></i>
+            </div>
+            <div class="proposal-point-content">
+              <div class="proposal-point-text">
+                • <strong>Oracle weakness</strong> → add mutation testing & metamorphic checks.<br>
+                • <strong>LLM determinism</strong> → fix seeds & log prompts; use temperature schedules.<br>
+                • <strong>Cost blow-ups</strong> → cap batch size, early-stop low-reward arms, use BO for expensive knobs.
+              </div>
+            </div>
+          </div>
+
+          <div class="chips">
+            <span class="chip"><i class="fas fa-brain"></i> Reinforcement Learning</span>
+            <span class="chip"><i class="fas fa-chart-line"></i> Bayesian Optimization</span>
+            <span class="chip"><i class="fas fa-dna"></i> Genetic Algorithms</span>
+            <span class="chip"><i class="fas fa-shield-alt"></i> Mutation Testing</span>
+            <span class="chip"><i class="fas fa-code"></i> Software Testing</span>
+            <span class="chip"><i class="fas fa-robot"></i> LLM Integration</span>
+          </div>
+        </article>
+
+        <!-- Research Proposal 2 -->
+        <article class="project">
+          <h4><i class="fas fa-file-pdf"></i> Efficient Handling and Retrieval of Document Content Using Large Language Models and Retrieval-Augmented Techniques (Doc Agent)</h4>
+          
+          
+          <div class="proposal-points">
+            <div class="proposal-point" onclick="toggleProposalPoint(this)">
+              <div class="proposal-point-number">1</div>
+              <div class="proposal-point-title">Objective</div>
+              <i class="fas fa-chevron-down proposal-point-icon"></i>
+            </div>
+            <div class="proposal-point-content">
+              <div class="proposal-point-text">Build a page/section-aware RAG system that can (a) answer semantic questions and (b) return precise, citable evidence (page/section-anchored spans) with low latency on large PDFs.</div>
+            </div>
+
+            <div class="proposal-point" onclick="toggleProposalPoint(this)">
+              <div class="proposal-point-number">2</div>
+              <div class="proposal-point-title">Testable Hypotheses</div>
+              <i class="fas fa-chevron-down proposal-point-icon"></i>
+            </div>
+            <div class="proposal-point-content">
+              <div class="proposal-point-text">
+                <strong>H1 (Localization):</strong> Page/section-aware RAG yields higher Page@1/Page@K than LLM-only and plain chunking.<br><br>
+                <strong>H2 (Retrieval):</strong> Hybrid retrieval (BM25 + dense) outperforms dense-only or BM25-only on mixed semantic + exact queries at similar latency.<br><br>
+                <strong>H3 (Chunking):</strong> Moderate chunk sizes with light overlap (e.g., 600–1,000 tokens, 10–15% overlap) + hierarchical Map-Reduce summaries maximize faithfulness and lower hallucinations.<br><br>
+                <strong>H4 (Faithfulness):</strong> Answer-from-quotes with page/section citations reduces hallucination rate without hurting task usefulness.
+              </div>
+            </div>
+
+            <div class="proposal-point" onclick="toggleProposalPoint(this)">
+              <div class="proposal-point-number">3</div>
+              <div class="proposal-point-title">System Architecture</div>
+              <i class="fas fa-chevron-down proposal-point-icon"></i>
+            </div>
+            <div class="proposal-point-content">
+              <div class="proposal-point-text">
+                <strong>End-to-End Pipeline:</strong><br><br>
+                <strong>Ingestion & Structuring:</strong><br>
+                1. Parse PDF → logical structure: pages, sections, headings, TOC anchors, figure/table captions; preserve (doc_id, page_no, section_id, heading path).<br>
+                2. OCR (if needed) and layout recovery (tables, footnotes, columns) → attach bbox for spans.<br><br>
+                <strong>Indexing:</strong><br>
+                • Create page-aware chunks with metadata (doc_id, page_no, section_id, heading_path, text, token_len, emb, bm25_terms)<br>
+                • Build dual indices: BM25/keyword (inverted index) + Dense (ANN: HNSW/FAISS)<br><br>
+                <strong>Map-Reduce Summarization (offline):</strong><br>
+                • Map: page-level keypoint summaries + salient spans (quote candidates)<br>
+                • Reduce-1: merge pages → section summaries with page backlinks<br>
+                • Reduce-2: merge sections → chapter/whole-doc overview & topic index<br><br>
+                <strong>Query Flow (online):</strong><br>
+                1. Intent & constraint detection: semantic vs exact ("what's on page 496?" → force page_no=496)<br>
+                2. Candidate retrieval (hybrid): top-K from BM25 and dense; merge + dedup by page/section<br>
+                3. Reranking: cross-encoder + MMR diversification to avoid same-page near-duplicates<br>
+                4. Evidence extraction: span scoring within top chunks; return quoted spans with page/section<br>
+                5. Answerer: constrained generation that must (a) cite pages, (b) quote or paraphrase only from retrieved spans
+              </div>
+            </div>
+
+            <div class="proposal-point" onclick="toggleProposalPoint(this)">
+              <div class="proposal-point-number">4</div>
+              <div class="proposal-point-title">Retrieval & Reranking</div>
+              <i class="fas fa-chevron-down proposal-point-icon"></i>
+            </div>
+            <div class="proposal-point-content">
+              <div class="proposal-point-text">
+                <strong>Hybrid score for chunk (i):</strong><br>
+                S_i = η · BM25_i^norm + (1-η) · cos(q, e_i)<br>
+                with η ∈ [0,1] tuned per query type (↑ for exact keyword/page queries).<br><br>
+                <strong>MMR (diversify by page/section):</strong><br>
+                MMR(i) = λ·S_i - (1-λ)max_{j ∈ R} sim(i,j)<br>
+                where R is the current selected set; similarity uses page/section penalties to avoid duplicates from the same page unless explicitly asked.<br><br>
+                <strong>Span extraction inside a chunk:</strong><br>
+                • Score sentences by BM25(term overlap) + dense similarity + title/heading proximity + bbox prominence (if layout is available)<br>
+                • Keep top-N spans; attach (doc_id, page_no, start-end char/bbox)
+              </div>
+            </div>
+
+            <div class="proposal-point" onclick="toggleProposalPoint(this)">
+              <div class="proposal-point-number">5</div>
+              <div class="proposal-point-title">Answer Constraints</div>
+              <i class="fas fa-chevron-down proposal-point-icon"></i>
+            </div>
+            <div class="proposal-point-content">
+              <div class="proposal-point-text">
+                • <strong>Quote-first:</strong> synthesize from quoted spans (with citations like "p. 496, §3.2.1")<br>
+                • <strong>Strict grounding:</strong> disallow introducing facts not supported by retrieved spans<br>
+                • <strong>Structured output:</strong><br>
+                &nbsp;&nbsp;o Answer (2–5 sentences)<br>
+                &nbsp;&nbsp;o Evidence (bulleted quotes + page/section)<br>
+                &nbsp;&nbsp;o Where to read next (section headings with page ranges)
+              </div>
+            </div>
+
+            <div class="proposal-point" onclick="toggleProposalPoint(this)">
+              <div class="proposal-point-number">6</div>
+              <div class="proposal-point-title">Experimental Design</div>
+              <i class="fas fa-chevron-down proposal-point-icon"></i>
+            </div>
+            <div class="proposal-point-content">
+              <div class="proposal-point-text">
+                <strong>Datasets (diverse structure & length):</strong><br>
+                • Technical standards / statutes (e.g., GDPR, software specs), long textbooks/monographs, multi-chapter reports<br>
+                • For each doc: create gold annotations mapping ~200–400 questions to correct page(s)/section(s) and answer spans<br><br>
+                <strong>Query sets:</strong><br>
+                • Semantic: "Where is lawful basis 'legitimate interest' discussed?"<br>
+                • Exact/structural: "What is on page 496?" "Summarize §5.4.2."<br>
+                • Hybrid: "Page with the final algorithm pseudocode for X?"<br><br>
+                <strong>Baselines:</strong><br>
+                • B0: LLM-only (no retrieval)<br>
+                • B1: Plain chunking + dense-only<br>
+                • B2: Plain chunking + BM25-only<br>
+                • B3: Hybrid retrieval but no hierarchical summaries, no reranker<br>
+                • Ours: Full Doc Agent (chunking+metadata, hybrid, rerank, hierarchical Map-Reduce, quote-constrained answering)
+              </div>
+            </div>
+
+            <div class="proposal-point" onclick="toggleProposalPoint(this)">
+              <div class="proposal-point-number">7</div>
+              <div class="proposal-point-title">Metrics</div>
+              <i class="fas fa-chevron-down proposal-point-icon"></i>
+            </div>
+            <div class="proposal-point-content">
+              <div class="proposal-point-text">
+                <strong>Localization & Faithfulness:</strong><br>
+                • Page@1/Page@3/Page@5 (gold page covered in top-K evidence)<br>
+                • Section@K (section-level localization)<br>
+                • Span F1 (answer span extraction vs gold)<br>
+                • Citation precision/recall (are page/section cites correct?)<br>
+                • Hallucination rate (unsupported claims per answer)<br><br>
+                <strong>Answer Quality & Utility:</strong><br>
+                • Exact match / ROUGE-L vs gold answers (when available)<br>
+                • Human utility rating (1–5) on correctness + clarity<br><br>
+                <strong>Efficiency & Scalability:</strong><br>
+                • Latency (p50/p95) per query<br>
+                • Cost (tokens + embedding + reranker)<br>
+                • Indexing throughput (pages/min) and index size<br>
+                • Cold-start speed (first-page-ready time)
+              </div>
+            </div>
+
+            <div class="proposal-point" onclick="toggleProposalPoint(this)">
+              <div class="proposal-point-number">8</div>
+              <div class="proposal-point-title">Implementation Plan</div>
+              <i class="fas fa-chevron-down proposal-point-icon"></i>
+            </div>
+            <div class="proposal-point-content">
+              <div class="proposal-point-text">
+                <strong>Phase 1 — MVP (1–2 weeks):</strong><br>
+                • Parser + page-aware chunker (+ optional OCR)<br>
+                • Dual indices (BM25 + dense) and hybrid scorer (S_i)<br>
+                • Simple reranker (cross-encoder) + MMR<br>
+                • Quote-constrained answer template returning (answer + evidence with page numbers)<br><br>
+                <strong>Phase 2 — Hierarchical & Span Extraction (1–2 weeks):</strong><br>
+                • Map-Reduce summaries: page → section → chapter<br>
+                • Sentence/paragraph-level span scorer (hybrid signals)<br>
+                • Add "page-forced" mode for structural queries<br><br>
+                <strong>Phase 3 — Evaluation Rig (1–2 weeks):</strong><br>
+                • Gold QA sets with page/section ground truth<br>
+                • Batch runner, metrics, and ablation toggles<br>
+                • Latency and cost instrumentation; caching
+              </div>
+            </div>
+
+            <div class="proposal-point" onclick="toggleProposalPoint(this)">
+              <div class="proposal-point-number">9</div>
+              <div class="proposal-point-title">Efficiency Tactics</div>
+              <i class="fas fa-chevron-down proposal-point-icon"></i>
+            </div>
+            <div class="proposal-point-content">
+              <div class="proposal-point-text">
+                • ANN (HNSW/FAISS) for dense; prune to Kd, union with Kb from BM25, rerank top Kr (e.g., 40→16→8)<br>
+                • Cache per-doc: embeddings, summaries, and top-K retrievals for recent queries<br>
+                • Early exit for exact "page = N" queries (skip dense; only filter by page_no)<br>
+                • Streaming answers; quote packing to minimize context tokens
+              </div>
+            </div>
+
+            <div class="proposal-point" onclick="toggleProposalPoint(this)">
+              <div class="proposal-point-number">10</div>
+              <div class="proposal-point-title">Risks & Mitigations</div>
+              <i class="fas fa-chevron-down proposal-point-icon"></i>
+            </div>
+            <div class="proposal-point-content">
+              <div class="proposal-point-text">
+                • <strong>PDF layout noise / OCR errors</strong> → fallback to page-level retrieval; add fuzzy term matching; keep bbox to avoid column bleed<br>
+                • <strong>Over-chunking</strong> → increases latency; use adaptive chunking by layout (headings, long paragraphs)<br>
+                • <strong>Dense drift across domains</strong> → try domain-tuned embeddings; mix with BM25 and increase η for keyword-heavy queries<br>
+                • <strong>Reranker cost</strong> → light cross-encoder; cap rerank set; quantize
+              </div>
+            </div>
+
+            <div class="proposal-point" onclick="toggleProposalPoint(this)">
+              <div class="proposal-point-number">11</div>
+              <div class="proposal-point-title">Expected Contributions</div>
+              <i class="fas fa-chevron-down proposal-point-icon"></i>
+            </div>
+            <div class="proposal-point-content">
+              <div class="proposal-point-text">
+                1. A page/section-aware RAG pipeline that improves correct-page localization and faithful citations<br>
+                2. A hybrid retrieval + reranking recipe tailored to mixed semantic & structural queries<br>
+                3. A quote-first, cite-always answerer that demonstrably reduces hallucinations<br>
+                4. A reproducible benchmark (docs, queries, metrics) for page-level QA over long PDFs
+              </div>
+            </div>
+
+            <div class="proposal-point" onclick="toggleProposalPoint(this)">
+              <div class="proposal-point-number">12</div>
+              <div class="proposal-point-title">Reporting & Figures</div>
+              <i class="fas fa-chevron-down proposal-point-icon"></i>
+            </div>
+            <div class="proposal-point-content">
+              <div class="proposal-point-text">
+                • <strong>Localization curves:</strong> Page@K vs K for all methods<br>
+                • <strong>Latency-accuracy fronts:</strong> Page@1 vs p95 latency (Pareto)<br>
+                • <strong>Chunking ablation heatmap:</strong> Page@1 across (size × overlap)<br>
+                • <strong>Faithfulness bar chart:</strong> Hallucination rate & Citation precision by method<br>
+                • <strong>Retrieval mix:</strong> Contribution of BM25 vs dense in top-K across query types<br>
+                • <strong>Case studies:</strong> Side-by-side answers with quotes and page thumbnails
+              </div>
+            </div>
+          </div>
+
+          <div class="chips">
+            <span class="chip"><i class="fas fa-search"></i> RAG Systems</span>
+            <span class="chip"><i class="fas fa-file-alt"></i> Document Processing</span>
+            <span class="chip"><i class="fas fa-quote-left"></i> Citation Generation</span>
+            <span class="chip"><i class="fas fa-brain"></i> Hybrid Retrieval</span>
+            <span class="chip"><i class="fas fa-map"></i> Map-Reduce</span>
+            <span class="chip"><i class="fas fa-shield-alt"></i> Hallucination Prevention</span>
+          </div>
+        </article>
+      </div>
     </section>
 
     <section id="projects" class="card fade-in">
       <div class="section-title">
-        <h2><i class="fas fa-project-diagram"></i> Research Projects</h2>
+        <h2><i class="fas fa-project-diagram"></i> Projects</h2>
         <a href="https://github.com/AbrarSoul" target="_blank" rel="noopener">View All Repositories →</a>
       </div>
       <div class="projects">
@@ -465,7 +914,7 @@
           </div>
           <div class="item">
             <h4><i class="fas fa-certificate"></i> B.Sc. Computer Science & Engineering</h4>
-            <div class="meta">Nov 2013 – Dec 2017 · AUST, Bangladesh</div>
+            <div class="meta">Nov 2013 – Dec 2017 · Ahsanullah University of Science and Technology, Bangladesh</div>
           </div>
         </div>
       </div>
@@ -496,10 +945,20 @@
       </div>
       <div class="projects">
         <article class="project">
-          <h4><a href="https://link.springer.com/article/10.1007/s11042-025-20802-5" target="_blank" rel="noopener">
-            <i class="fas fa-cloud-rain"></i> Innovative Trend Analysis with Fuzzy Logic and K-means Clustering
+          <h4><a href="http://www.sciencedirect.com/science/article/pii/S2666033424000650" target="_blank" rel="noopener">
+            <i class="fas fa-cloud-rain"></i> Innovative trend analysis technique with fuzzy logic and K-means clustering approach for identification of homogenous rainfall region: A long-term rainfall data analysis over Bangladesh
           </a></h4>
           <p>Advanced data analysis technique for homogeneous rainfall regions using fuzzy logic and K-means clustering algorithms. Published in Springer's Multimedia Tools and Applications journal.</p>
+          <div class="abstract-toggle" onclick="toggleAbstract(this)">
+            <i class="fas fa-chevron-down"></i>
+            <span>View Abstract</span>
+          </div>
+          <div class="abstract-content">
+            <div class="abstract-text">
+              Understanding regional climatic trends is crucial for taking appropriate actions to mitigate the impacts of climate change and managing water resources effectively. This study aims to investigate the dissimilarities and similarities among various climate stations in Bangladesh from 1981 to 2021. Fuzzy C-means (FCM) and K-means clustering techniques were employed to identify regions with comparable rainfall patterns. Moreover, the innovative trend analysis (ITA) and the Mann-Kendall (MK) test family were utilized to analyze rainfall trends. The results indicate that both K-means and FCM methods successfully detected two rainfall regions in Bangladesh with distinct patterns. The ITA curve analysis revealed that out of the 29 stations, 13 had a non-monotonic increasing trend having no monotonic increasing trend, 8 had a non-monotonic decreasing trend, and 8 exhibited a monotonic decreasing trend. Additionally, the MK tests employed in the study showed predominantly negative trends across Bangladesh. The majority of stations (65.51%) fell into Cluster 1, while the remaining 34.48% were in Cluster 2. In terms of ITA analysis, 17.24% of stations exhibited a monotonic decrease, while there were no stations with a monotonic increase. However, 37.93% of stations showed a non-monotonic increase, and 44.83% displayed a non-monotonic decrease. These identified regions can provide valuable insights for water resource management, disaster risk reduction, and agricultural planning. Moreover, detailed rainfall analysis can help policymakers and scientists develop sustainable and effective regional-scale policies for managing the country's flood and drought situations, ultimately supporting agricultural development and environmental planning.
+            </div>
+          </div>
+          
           <div class="chips">
             <span class="chip"><i class="fas fa-chart-line"></i> Data Analysis</span>
             <span class="chip"><i class="fas fa-brain"></i> Machine Learning</span>
@@ -509,10 +968,21 @@
         </article>
         
         <article class="project">
-          <h4><a href="http://www.sciencedirect.com/science/article/pii/S2666033424000650" target="_blank" rel="noopener">
-            <i class="fas fa-lungs"></i> Ultrasound-Based AI for COVID-19 Detection
+          <h4><a href="https://link.springer.com/article/10.1007/s11042-025-20802-5" target="_blank" rel="noopener">
+            <i class="fas fa-lungs"></i> Ultrasound-based AI for COVID-19 detection: a comprehensive review of public and private lung ultrasound datasets and studies
           </a></h4>
           <p>Comprehensive review of public and private lung ultrasound datasets for COVID-19 detection using artificial intelligence. Published in Elsevier's Informatics in Medicine Unlocked journal.</p>
+          
+          <div class="abstract-toggle" onclick="toggleAbstract(this)">
+            <i class="fas fa-chevron-down"></i>
+            <span>View Abstract</span>
+          </div>
+          <div class="abstract-content">
+            <div class="abstract-text">
+              The COVID-19 pandemic has affected millions of people globally, with respiratory organs being strongly affected in individuals with comorbidities. Medical imaging-based diagnosis and prognosis have become increasingly popular in clinical settings for detecting COVID-19 lung infections. Among various medical imaging modalities, ultrasound stands out as a low-cost, mobile, and radiation-safe imaging technology. In this comprehensive review, we focus on AI-driven studies utilizing lung ultrasound (LUS) for COVID-19 detection and analysis. We provide a detailed overview of both publicly available and private LUS datasets and categorize the AI studies according to the dataset they used. Additionally, we systematically analyzed and tabulated the studies across various dimensions, including data preprocessing methods, AI models, cross-validation techniques, and evaluation metrics. In total, we reviewed 60 articles, 41 of which utilized public datasets, while the remaining employed private data. Our findings suggest that ultrasound-based AI studies for COVID-19 detection have great potential for clinical use, especially for children and pregnant women. Our review also provides a useful summary for future researchers and clinicians who may be interested in the field.
+            </div>
+          </div>
+          
           <div class="chips">
             <span class="chip"><i class="fas fa-stethoscope"></i> Medical AI</span>
             <span class="chip"><i class="fas fa-virus"></i> COVID-19</span>
@@ -701,11 +1171,21 @@
     let ticking = false;
     function updateHeader() {
       const header = document.querySelector('header');
+      const isLight = document.documentElement.classList.contains('light');
+      
       if (window.scrollY > 100) {
-        header.style.background = 'rgba(10,10,15,0.95)';
+        if (isLight) {
+          header.style.background = 'rgba(250,251,252,0.95)';
+        } else {
+          header.style.background = 'rgba(10,10,15,0.95)';
+        }
         header.style.backdropFilter = 'blur(20px)';
       } else {
-        header.style.background = 'rgba(10,10,15,0.8)';
+        if (isLight) {
+          header.style.background = 'rgba(250,251,252,0.9)';
+        } else {
+          header.style.background = 'rgba(10,10,15,0.8)';
+        }
         header.style.backdropFilter = 'blur(20px)';
       }
       ticking = false;
@@ -717,6 +1197,54 @@
         ticking = true;
       }
     });
+
+    // Manual abstract toggle functionality
+    function toggleAbstract(toggleElement) {
+      const content = toggleElement.nextElementSibling;
+      const isExpanded = content.classList.contains('expanded');
+      
+      if (isExpanded) {
+        content.classList.remove('expanded');
+        toggleElement.classList.remove('expanded');
+        toggleElement.querySelector('span').textContent = 'View Abstract';
+        content.style.maxHeight = '0px';
+      } else {
+        // Calculate the actual height needed for the content
+        const textElement = content.querySelector('.abstract-text');
+        if (textElement) {
+          const textHeight = textElement.scrollHeight;
+          const paddingHeight = 32; // 16px top + 16px bottom padding
+          const totalHeight = textHeight + paddingHeight;
+          content.style.maxHeight = totalHeight + 'px';
+        }
+        content.classList.add('expanded');
+        toggleElement.classList.add('expanded');
+        toggleElement.querySelector('span').textContent = 'Hide Abstract';
+      }
+    }
+
+    // Proposal point toggle functionality
+    function toggleProposalPoint(pointElement) {
+      const content = pointElement.nextElementSibling;
+      const isExpanded = content.classList.contains('expanded');
+      
+      if (isExpanded) {
+        content.classList.remove('expanded');
+        pointElement.classList.remove('expanded');
+        content.style.maxHeight = '0px';
+      } else {
+        // Calculate the actual height needed for the content
+        const textElement = content.querySelector('.proposal-point-text');
+        if (textElement) {
+          const textHeight = textElement.scrollHeight;
+          const paddingHeight = 32; // 16px top + 16px bottom padding
+          const totalHeight = textHeight + paddingHeight;
+          content.style.maxHeight = totalHeight + 'px';
+        }
+        content.classList.add('expanded');
+        pointElement.classList.add('expanded');
+      }
+    }
   </script>
 
   <!-- Structured data for better SEO -->
